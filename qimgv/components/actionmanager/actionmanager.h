@@ -123,11 +123,14 @@ signals:
     void print();
     void toggleFullscreenInfoBar();
     void pasteFile();
+    void rateStar0();
     void rateStar1();
     void rateStar2();
     void rateStar3();
     void rateStar4();
     void rateStar5();
+    void rateUp();
+    void rateDown();
 };
 
 extern ActionManager *actionManager;

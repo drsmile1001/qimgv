@@ -102,6 +102,8 @@ private:
     void doInteractiveMove(QString path, QString destDirectory, DialogResult &overwriteAllFiles);
 
     void rateCurrentFile(int n);
+    void rateCurrentFileUp();
+    void rateCurrentFileDown();
 
 private slots:
     void readSettings();

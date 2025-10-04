@@ -90,10 +90,13 @@ void Actions::init() {
     mActions.insert("print", QVersionNumber(1,0,0));
     mActions.insert("toggleFullscreenInfoBar", QVersionNumber(1,0,0));
     mActions.insert("pasteFile", QVersionNumber(1,0,3));
+    mActions.insert("rateStar0", QVersionNumber(1,0,0));
     mActions.insert("rateStar1", QVersionNumber(1,0,0));
     mActions.insert("rateStar2", QVersionNumber(1,0,0));
     mActions.insert("rateStar3", QVersionNumber(1,0,0));
     mActions.insert("rateStar4", QVersionNumber(1,0,0));
     mActions.insert("rateStar5", QVersionNumber(1,0,0));
+    mActions.insert("rateUp", QVersionNumber(1,0,0));
+    mActions.insert("rateDown", QVersionNumber(1,0,0));
 }
 

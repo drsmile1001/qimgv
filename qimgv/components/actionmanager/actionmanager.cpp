@@ -48,8 +48,6 @@ void ActionManager::initDefaults() {
     actionManager->defaults.insert(InputMap::keyNameCtrl() + "+-", "zoomOut");
     actionManager->defaults.insert(InputMap::keyNameCtrl() + "+Down", "zoomOut");
     actionManager->defaults.insert(InputMap::keyNameCtrl() + "+Up", "zoomIn");
-    actionManager->defaults.insert("Up", "scrollUp");
-    actionManager->defaults.insert("Down", "scrollDown");
     actionManager->defaults.insert(InputMap::keyNameCtrl() + "+O", "open");
     actionManager->defaults.insert(InputMap::keyNameCtrl() + "+S", "save");
     actionManager->defaults.insert(InputMap::keyNameCtrl() + "+" + InputMap::keyNameShift() + "+S", "saveAs");
@@ -86,11 +84,14 @@ void ActionManager::initDefaults() {
     actionManager->defaults.insert(InputMap::keyNameShift() + "+Left", "prevDirectory");
     actionManager->defaults.insert(InputMap::keyNameShift() + "+F", "toggleFullscreenInfoBar");
     actionManager->defaults.insert(InputMap::keyNameCtrl() + "+V", "pasteFile");
+    actionManager->defaults.insert(InputMap::keyNameAlt() + "+0", "rateStar0");
     actionManager->defaults.insert(InputMap::keyNameAlt() + "+1", "rateStar1");
     actionManager->defaults.insert(InputMap::keyNameAlt() + "+2", "rateStar2");
     actionManager->defaults.insert(InputMap::keyNameAlt() + "+3", "rateStar3");
     actionManager->defaults.insert(InputMap::keyNameAlt() + "+4", "rateStar4");
     actionManager->defaults.insert(InputMap::keyNameAlt() + "+5", "rateStar5");
+    actionManager->defaults.insert("Up", "rateUp");
+    actionManager->defaults.insert("Down", "rateDown");
 
 #ifdef __APPLE__
     actionManager->defaults.insert(InputMap::keyNameAlt() + "+Up", "zoomIn");

@@ -205,11 +205,14 @@ void Core::initActions() {
     connect(actionManager, &ActionManager::print, this, &Core::print);
     connect(actionManager, &ActionManager::toggleFullscreenInfoBar, this, &Core::toggleFullscreenInfoBar);
     connect(actionManager, &ActionManager::pasteFile, this, &Core::openFromClipboard);
+    connect(actionManager, &ActionManager::rateStar0, this, [this]() { rateCurrentFile(0); });
     connect(actionManager, &ActionManager::rateStar1, this, [this]() { rateCurrentFile(1); });
     connect(actionManager, &ActionManager::rateStar2, this, [this]() { rateCurrentFile(2); });
     connect(actionManager, &ActionManager::rateStar3, this, [this]() { rateCurrentFile(3); });
     connect(actionManager, &ActionManager::rateStar4, this, [this]() { rateCurrentFile(4); });
     connect(actionManager, &ActionManager::rateStar5, this, [this]() { rateCurrentFile(5); });
+    connect(actionManager, &ActionManager::rateUp, this, [this]() { rateCurrentFileUp(); });
+    connect(actionManager, &ActionManager::rateDown, this, [this]() { rateCurrentFileDown(); });
 }
 
 void Core::loadTranslation() {
@@ -1552,4 +1555,18 @@ void Core::updateInfoString() {
 void Core::rateCurrentFile(int n) {
     starRating->setRating(state.currentFilePath, n);
     updateInfoString();
+}
+void Core::rateCurrentFileUp() {
+    int currentRating = starRating->getRating(state.currentFilePath);
+    if(currentRating < 5) {
+        starRating->setRating(state.currentFilePath, currentRating + 1);
+        updateInfoString();
+    }
+}
+void Core::rateCurrentFileDown() {
+    int currentRating = starRating->getRating(state.currentFilePath);
+    if(currentRating > 0) {
+        starRating->setRating(state.currentFilePath, currentRating - 1);
+        updateInfoString();
+    }
 }
