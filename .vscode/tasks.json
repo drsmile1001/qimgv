@@ -2,6 +2,11 @@
   "version": "2.0.0",
   "tasks": [
     {
+      "label": "CMake Configure (novideo)",
+      "type": "shell",
+      "command": "cmake -S ${workspaceFolder} -B ${workspaceFolder}/build-novideo -G Ninja -DCMAKE_BUILD_TYPE=Debug -DVIDEO_SUPPORT=OFF"
+    },
+    {
       "label": "Build (novideo)",
       "type": "shell",
       "command": "ninja -C ${workspaceFolder}/build-novideo -j$(nproc)"
@@ -9,7 +14,7 @@
     {
       "label": "Run qimgv (novideo, X11)",
       "type": "shell",
-      "command": "${workspaceFolder}/build-novideo/qimgv/qimgv $HOME/Pictures",
+      "command": "${workspaceFolder}/build-novideo/qimgv/qimgv ${userHome}/pictures",
       "options": {
         "cwd": "${workspaceFolder}/build-novideo/qimgv",
         "env": { "QT_QPA_PLATFORM": "xcb" }

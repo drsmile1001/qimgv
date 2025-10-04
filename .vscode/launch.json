@@ -6,7 +6,7 @@
       "type": "lldb",
       "request": "launch",
       "program": "${workspaceFolder}/build-novideo/qimgv/qimgv",
-      "args": ["$HOME/Pictures"],
+      "args": ["${userHome}/pictures"],
       "cwd": "${workspaceFolder}/build-novideo/qimgv",
       "env": { "QT_QPA_PLATFORM": "xcb" },
       "preLaunchTask": "Build (novideo)",
