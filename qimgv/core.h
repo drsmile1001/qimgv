@@ -16,6 +16,7 @@
 #include "gui/mainwindow.h"
 #include "utils/randomizer.h"
 #include "gui/dialogs/printdialog.h"
+#include "starrating.h"
 
 #ifdef __GLIBC__
 #include <malloc.h>
@@ -39,6 +40,7 @@ class Core : public QObject {
 public:
     Core();
     void showGui();
+    StarRating* starRating;
 
 public slots:
     void updateInfoString();
@@ -98,6 +100,8 @@ private:
 
     void doInteractiveCopy(QString path, QString destDirectory, DialogResult &overwriteAllFiles);
     void doInteractiveMove(QString path, QString destDirectory, DialogResult &overwriteAllFiles);
+
+    void rateCurrentFile(int n);
 
 private slots:
     void readSettings();

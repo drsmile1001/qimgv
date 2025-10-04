@@ -773,7 +773,7 @@ void MW::closeFullScreenOrExit() {
 }
 
 // todo: this is crap, use shared state object
-void MW::setCurrentInfo(int _index, int _fileCount, QString _filePath, QString _fileName, QSize _imageSize, qint64 _fileSize, bool slideshow, bool shuffle, bool edited) {
+void MW::setCurrentInfo(int _index, int _fileCount, QString _filePath, QString _fileName, QSize _imageSize, qint64 _fileSize, bool slideshow, bool shuffle, bool edited, int rating) {
     info.index = _index;
     info.fileCount = _fileCount;
     info.fileName = _fileName;
@@ -783,11 +783,21 @@ void MW::setCurrentInfo(int _index, int _fileCount, QString _filePath, QString _
     info.slideshow = slideshow;
     info.shuffle = shuffle;
     info.edited = edited;
+    info.rating = rating;
     onInfoUpdated();
 }
 
 // todo: nuke and rewrite
 void MW::onInfoUpdated() {
+    QString ratingStars = "  ";
+    int maxStars = 5;
+    for(int i = 0; i < maxStars; ++i) {
+        if(i < info.rating)
+            ratingStars.append("★");
+        else
+            ratingStars.append("☆");
+    }
+    
     QString posString;
     if(info.fileCount)
         posString = "[ " + QString::number(info.index + 1) + "/" + QString::number(info.fileCount) + " ]";
@@ -836,8 +846,8 @@ void MW::onInfoUpdated() {
         if(info.edited)
             windowTitle.prepend("* ");
 
-        infoBarFullscreen->setInfo(posString, info.fileName + (info.edited ? "  *" : ""), resString + "  " + sizeString);
-        infoBarWindowed->setInfo(posString, info.fileName + (info.edited ? "  *" : ""), resString + "  " + sizeString + " " + states);
+        infoBarFullscreen->setInfo(posString, info.fileName + (info.edited ? "  *" : "") + ratingStars, resString + "  " + sizeString);
+        infoBarWindowed->setInfo(posString, info.fileName + (info.edited ? "  *" : "") + ratingStars, resString + "  " + sizeString + " " + states);
     }
     setWindowTitle(windowTitle);
 }

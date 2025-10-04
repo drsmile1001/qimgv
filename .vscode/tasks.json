@@ -1,0 +1,24 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build (novideo)",
+      "type": "shell",
+      "command": "ninja -C ${workspaceFolder}/build-novideo -j$(nproc)"
+    },
+    {
+      "label": "Run qimgv (novideo, X11)",
+      "type": "shell",
+      "command": "${workspaceFolder}/build-novideo/qimgv/qimgv $HOME/Pictures",
+      "options": {
+        "cwd": "${workspaceFolder}/build-novideo/qimgv",
+        "env": { "QT_QPA_PLATFORM": "xcb" }
+      }
+    },
+    {
+      "label": "Build & Run (novideo)",
+      "dependsOrder": "sequence",
+      "dependsOn": ["Build (novideo)", "Run qimgv (novideo, X11)"]
+    }
+  ]
+}

@@ -46,6 +46,7 @@ add_executable(qimgv
     macosapplication.cpp
     resources.qrc
     qimgv.rc
+    starrating.cpp
     ${APPLE_ICON_PATH}
     ${QM_FILES}
 )

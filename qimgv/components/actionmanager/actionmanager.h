@@ -123,6 +123,11 @@ signals:
     void print();
     void toggleFullscreenInfoBar();
     void pasteFile();
+    void rateStar1();
+    void rateStar2();
+    void rateStar3();
+    void rateStar4();
+    void rateStar5();
 };
 
 extern ActionManager *actionManager;

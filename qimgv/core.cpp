@@ -33,6 +33,9 @@ Core::Core()
         onFirstRun();
     else if(appVersion > lastVersion)
         onUpdate();
+
+    starRating = new StarRating(this);
+    starRating->load();
 }
 
 void Core::readSettings() {
@@ -202,6 +205,11 @@ void Core::initActions() {
     connect(actionManager, &ActionManager::print, this, &Core::print);
     connect(actionManager, &ActionManager::toggleFullscreenInfoBar, this, &Core::toggleFullscreenInfoBar);
     connect(actionManager, &ActionManager::pasteFile, this, &Core::openFromClipboard);
+    connect(actionManager, &ActionManager::rateStar1, this, [this]() { rateCurrentFile(1); });
+    connect(actionManager, &ActionManager::rateStar2, this, [this]() { rateCurrentFile(2); });
+    connect(actionManager, &ActionManager::rateStar3, this, [this]() { rateCurrentFile(3); });
+    connect(actionManager, &ActionManager::rateStar4, this, [this]() { rateCurrentFile(4); });
+    connect(actionManager, &ActionManager::rateStar5, this, [this]() { rateCurrentFile(5); });
 }
 
 void Core::loadTranslation() {
@@ -342,6 +350,9 @@ void Core::rotateRight() {
 }
 
 void Core::close() {
+    if (starRating) {
+        starRating->save();
+    }
     mw->close();
 }
 
@@ -1517,6 +1528,7 @@ void Core::updateInfoString() {
     QSize imageSize(0,0);
     qint64 fileSize = 0;
     bool edited = false;
+    int rating = starRating->getRating(state.currentFilePath);
 
     if(model->isLoaded(state.currentFilePath)) {
         auto img = model->getImage(state.currentFilePath);
@@ -1533,5 +1545,11 @@ void Core::updateInfoString() {
                        fileSize,
                        slideshow,
                        shuffle,
-                       edited);
+                       edited,
+                       rating);
+}
+
+void Core::rateCurrentFile(int n) {
+    starRating->setRating(state.currentFilePath, n);
+    updateInfoString();
 }
