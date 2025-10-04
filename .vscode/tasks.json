@@ -4,7 +4,7 @@
     {
       "label": "CMake Configure (novideo)",
       "type": "shell",
-      "command": "cmake -S ${workspaceFolder} -B ${workspaceFolder}/build-novideo -G Ninja -DCMAKE_BUILD_TYPE=Debug -DVIDEO_SUPPORT=OFF"
+      "command": "cmake -S ${workspaceFolder} -B ${workspaceFolder}/build-novideo -G Ninja -DCMAKE_BUILD_TYPE=Debug -DVIDEO_SUPPORT=OFF -DCMAKE_EXPORT_COMPILE_COMMANDS=ON && ln -sf ${workspaceFolder}/build-novideo/compile_commands.json ${workspaceFolder}/compile_commands.json"
     },
     {
       "label": "Build (novideo)",

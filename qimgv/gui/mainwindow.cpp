@@ -845,6 +845,7 @@ void MW::onInfoUpdated() {
             windowTitle.append(" -" + states);
         if(info.edited)
             windowTitle.prepend("* ");
+        windowTitle.append(ratingStars);
 
         infoBarFullscreen->setInfo(posString, info.fileName + (info.edited ? "  *" : "") + ratingStars, resString + "  " + sizeString);
         infoBarWindowed->setInfo(posString, info.fileName + (info.edited ? "  *" : "") + ratingStars, resString + "  " + sizeString + " " + states);
