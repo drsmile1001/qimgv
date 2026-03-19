@@ -20,3 +20,4 @@ ui_settingsdialog.h
 Makefile
 build-novideo
 compile_commands.json
+.cache
